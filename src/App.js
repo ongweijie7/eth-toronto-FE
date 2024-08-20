@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import Home from './pages/Home'
+import TransferOwnership from './pages/TransferOwnership';
+import Trace from './pages/Trace'
+import Navbar from './components/Navbar';
+import Login from './pages/Login';
+import ProtectedRoute from './components/ProtectedRoute';
+import { AuthContext } from './auth/ProvideAuth';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login/>} />
+          <Route path="/" element={<ProtectedRoute Component={Home}/>} />
+          <Route path="/transfer" element={<ProtectedRoute Component={TransferOwnership} />} />
+          <Route path="/trace" element={<ProtectedRoute Component={Trace} />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthContext>
   );
 }
 
