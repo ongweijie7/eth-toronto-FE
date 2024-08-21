@@ -4,7 +4,6 @@ import { userContext } from "../auth/ProvideAuth";
 
 const useHome = () => {
   const [gunsSerialNumber, setGunsSerialNumber] = useState(null)
-  console.log(useContext(userContext))
   const { walletAddress } = useContext(userContext);
   
   const getGuns = async () => {

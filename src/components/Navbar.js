@@ -19,13 +19,13 @@ export const SidebarData = [
     cName: "nav-text"
   },
   {
-    title: "Transfer Ownership",
+    title: "Register Gun",
     path: "/transfer",
     icon: <BiIcons.BiTransferAlt />,
     cName: "nav-text"
   },
   {
-    title: "Trace",
+    title: "Trace Guns",
     path: "/trace",
     icon: <IoIcons.IoIosPaper />,
     cName: "nav-text"

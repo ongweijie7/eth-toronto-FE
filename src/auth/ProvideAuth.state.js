@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useProvideAuth = () => {
   const [walletAddress, setWalletAddress] = useState(null)
@@ -17,6 +17,27 @@ const useProvideAuth = () => {
       console.log("MetaMask is not installed");
     }
   }
+
+  useEffect(() => {
+    if (window.ethereum) {
+      const handleAccountsChanged = (accounts) => {
+        if (accounts.length > 0) {
+          setWalletAddress(accounts[0]);
+          console.log('Account changed');
+        } else {
+          setWalletAddress(null); // User has disconnected their account
+          console.log('MetaMask disconnected');
+        }
+      };
+
+      window.ethereum.on('accountsChanged', handleAccountsChanged);
+
+      // Cleanup event listener when component unmounts
+      return () => {
+        window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+      };
+    }
+  }, []);
 
   return {
     walletAddress,

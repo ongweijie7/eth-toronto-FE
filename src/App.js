@@ -1,7 +1,7 @@
 import './App.css'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
-import TransferOwnership from './pages/TransferOwnership';
+import TransferOwnership from './pages/RegisterOwnership';
 import Trace from './pages/Trace'
 import Navbar from './components/Navbar';
 import Login from './pages/Login';

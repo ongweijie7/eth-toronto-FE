@@ -6,7 +6,6 @@ const useTrace = () => {
 
   const getRegisteredGuns = async () => {
     const { registeredGuns } = await fetchRegisteredGuns()
-    console.log(registeredGuns)
     setRegisteredGuns(registeredGuns)
     return registeredGuns
   }
